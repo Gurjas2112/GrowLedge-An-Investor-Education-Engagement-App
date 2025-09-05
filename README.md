@@ -36,9 +36,9 @@ A comprehensive investor education and engagement app built with Flutter fronten
 ### Backend
 - **FastAPI** (Python 3.11)
 - **Firebase Admin SDK** (Authentication & Database)
-- **Alpha Vantage API** (Stock Market Data)
+-**ICICI BREEZE TRADING API** (Stock Market Data)
 - **Hugging Face API** (AI Summarization)
-- **LibreTranslate** (Text Translation)
+- **Flutter translate library** (Text Translation)
 - **gTTS** (Text-to-Speech Generation)
 
 ## Project Structure
