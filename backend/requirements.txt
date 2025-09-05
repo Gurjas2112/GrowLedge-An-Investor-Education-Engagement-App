@@ -5,6 +5,8 @@ pymongo==4.5.0
 python-dotenv==1.0.0
 requests==2.31.0
 pydantic==2.4.2
+email-validator==2.1.0
+breeze-connect==1.0.64
 gtts==2.4.0
 python-multipart==0.0.6
 httpx==0.25.0
