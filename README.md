@@ -18,7 +18,7 @@ A comprehensive investor education and engagement app built with Flutter fronten
 ### Backend (FastAPI)
 - **Authentication**: JWT-based auth with Firebase integration
 - **CRUD Operations**: Full data management for users, lessons, quizzes
-- **Trading API**: Real-time stock data via Alpha Vantage
+- **Trading API**: Real-time stock data via Breeze Connect (ICICI Securities)
 - **AI Services**: Content summarization, translation, text-to-speech
 - **Cloud Storage**: Firebase Firestore and Storage integration
 
@@ -35,8 +35,8 @@ A comprehensive investor education and engagement app built with Flutter fronten
 
 ### Backend
 - **FastAPI** (Python 3.11)
-- **Firebase Admin SDK** (Authentication & Database)
--**ICICI BREEZE TRADING API** (Stock Market Data)
+- **Mongo DB and JWT** (Authentication & Database)
+- **Breeze Connect API** (ICICI Securities Trading & Market Data)
 - **Hugging Face API** (AI Summarization)
 - **Flutter translate library** (Text Translation)
 - **gTTS** (Text-to-Speech Generation)
@@ -74,8 +74,8 @@ GrowLedge/
 ### Prerequisites
 - Flutter SDK (3.0+)
 - Python 3.11+
-- Firebase Project
-- API Keys (Alpha Vantage, Hugging Face)
+- Breeze Connect API credentials (ICICI Securities)
+- API Keys (Hugging Face)
 
 ### Backend Setup
 
@@ -103,8 +103,8 @@ GrowLedge/
    ```
 
 5. **Update .env file** with your:
-   - Firebase service account credentials
-   - Alpha Vantage API key
+
+   - Breeze Connect API credentials (API key, secret key, session token)
    - Hugging Face API key
    - JWT secret key
 
@@ -153,9 +153,11 @@ Once the backend is running, visit:
 - Progress tracking and gamification elements
 
 ### Virtual Trading
-- Real-time stock data from Alpha Vantage API
+- Real-time stock data from Breeze Connect API (ICICI Securities)
 - Portfolio management with buy/sell operations
 - Performance analytics and profit/loss tracking
+- Support for Indian stock market (NSE/BSE)
+- Historical data analysis and charting
 
 ### AI-Powered Features
 - Content summarization using Hugging Face models
@@ -166,6 +168,33 @@ Once the backend is running, visit:
 - XP (Experience Points) system
 - Achievement badges
 - Leaderboards and progress tracking
+
+## Breeze Connect Integration
+
+GrowLedge integrates with **Breeze Connect API** from ICICI Securities to provide real-time Indian stock market data. This integration offers:
+
+### Features
+- **Real-time Stock Quotes**: Live prices for NSE and BSE stocks
+- **Historical Data**: Access to historical price data for analysis
+- **Stock Search**: Search functionality for Indian stocks
+- **Popular Stocks**: Curated list of popular Indian stocks (RELIANCE, TCS, HDFCBANK, etc.)
+- **Portfolio Performance**: Real-time portfolio valuation and P&L tracking
+- **Market Status**: Live market status (open/closed) information
+- **Demo Mode**: Fallback to mock data when API credentials are not available
+
+### Configuration
+The Breeze Connect integration supports both production and demo modes:
+- **Production**: Uses real API credentials for live market data
+- **Demo Mode**: Uses simulated data for development and testing
+- **Rate Limiting**: Built-in rate limiting to respect API quotas
+- **Caching**: Intelligent caching to optimize API usage
+
+### Breeze API Capabilities
+- Real-time stock quotes with bid/ask prices
+- Historical data with configurable time periods
+- Stock search with fuzzy matching
+- Portfolio performance analytics
+- Market status monitoring
 
 ## API Endpoints
 
@@ -187,6 +216,12 @@ Once the backend is running, visit:
 - `GET /trading/portfolio/{user_id}` - Get user portfolio
 - `POST /trading/trade` - Execute trade
 - `GET /trading/stock/{symbol}` - Get stock quote
+- `GET /trading/quotes` - Get multiple stock quotes
+- `GET /trading/historical/{symbol}` - Get historical data
+- `GET /trading/search` - Search stocks
+- `GET /trading/popular` - Get popular Indian stocks
+- `GET /trading/portfolio/{user_id}/performance` - Get portfolio performance
+- `GET /trading/market/status` - Get market status
 
 ### AI Services
 - `POST /ai/summarize` - Summarize text content
